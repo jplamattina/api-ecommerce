@@ -1,0 +1,62 @@
+[
+	{
+		"title": "acl",
+		"description": "celular pantalla tatctis",
+		"code": "001",
+		"price": 5200,
+		"status": 1,
+		"stock": 10,
+		"category": "televisores",
+		"id": 1
+	},
+	{
+		"title": "samsung",
+		"description": "celular pantalla tatctis",
+		"code": "001",
+		"price": 5200,
+		"status": 1,
+		"stock": 10,
+		"category": "televisores",
+		"id": 2
+	},
+	{
+		"title": "tcl",
+		"description": "celular pantalla tatctis",
+		"code": "001",
+		"price": 5200,
+		"status": 1,
+		"stock": 10,
+		"category": "televisores",
+		"id": 3
+	},
+	{
+		"title": "lenovo",
+		"description": "celular pantalla tatctis",
+		"code": "001",
+		"price": 5200,
+		"status": 1,
+		"stock": 10,
+		"category": "televisores",
+		"id": 4
+	},
+	{
+		"title": "televisor android",
+		"description": "celular pantalla tatctis",
+		"code": "001",
+		"price": 5200,
+		"status": 1,
+		"stock": 10,
+		"category": "televisores",
+		"id": 5
+	},
+	{
+		"title": "philips",
+		"description": "celular pantalla tatctis",
+		"code": "001",
+		"price": 5200,
+		"status": 1,
+		"stock": 10,
+		"category": "televisores",
+		"id": 6
+	}
+]
