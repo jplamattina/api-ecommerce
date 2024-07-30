@@ -22,7 +22,6 @@ class CartManagerFs {
     createCart = async (cartProducts) => {
         try {
             const cart = await this.readCart()
-            // console.log('cart length', cart.products.length)
             const newCart = {
                 id: cart.length === 0 ? 1 : cart[cart.length - 1].id + 1,
                 products: cartProducts.map(item => ({
@@ -31,7 +30,6 @@ class CartManagerFs {
                 }))
             };
             cart.push(newCart)
-            console.log('cart', cart)
             await fs.promises.writeFile(path, JSON.stringify(cart, null, '\t'))
             return newCart
         } catch (error) {
@@ -41,9 +39,7 @@ class CartManagerFs {
     getCartById = async (cid) => {
         try {
             const cart = await this.readCart()
-            console.log('cart', cart)
             const filterProducts = cart.filter(product => product.id == parseInt(cid))
-            console.log('filterProducts', filterProducts)
             return filterProducts
         } catch (error) {
             console.error('error de productos', error)

@@ -50,7 +50,6 @@ class ProductsManagerFs {
         const newList = []
         try {
             const productsDb = await this.readProducts()
-            console.log('products', products)
             productsDb.forEach(item =>
                 {
                     if (item.id == updatedProduct.id){

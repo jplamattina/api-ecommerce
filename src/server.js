@@ -19,7 +19,6 @@ app.post('/', uploader.single('myFile'), (req, res) => {
 app.use('/api/products', productRouter)
 app.use('/api/cart', cartRouter)
 
-//este middleware va aca para capturar todos los errores de la aplicacion
 app.use((error, req, res, next) => {
     console.log('error: ', error.stack)
     res.status(500).send('error de server')

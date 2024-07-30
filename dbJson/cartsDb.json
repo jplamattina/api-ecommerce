@@ -17,6 +17,14 @@
 			{
 				"productId": 4,
 				"quantity": 10
+			},
+			{
+				"productId": 5,
+				"quantity": 10
+			},
+			{
+				"productId": 6,
+				"quantity": 10
 			}
 		]
 	},
@@ -49,6 +57,10 @@
 			},
 			{
 				"productId": 7,
+				"quantity": 10
+			},
+			{
+				"productId": 8,
 				"quantity": 10
 			}
 		]

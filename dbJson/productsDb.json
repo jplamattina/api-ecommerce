@@ -58,5 +58,15 @@
 		"stock": 10,
 		"category": "televisores",
 		"id": 6
+	},
+	{
+		"title": "nuevo modelo",
+		"description": "celular pantalla tatctis",
+		"code": "001",
+		"price": 5200,
+		"status": 1,
+		"stock": 10,
+		"category": "televisores",
+		"id": 7
 	}
 ]

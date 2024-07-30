@@ -1,11 +1,8 @@
 const { Router } = require('express')
 const CartManagerFs = require('../managers/FileSystem/carts.manager')
 const ProductsManagerFs = require('../managers/FileSystem/products.manager')
-//import { Router } from 'express' -> type modules
 
 const router = Router()
-
-
 
 const { getProducts } = new ProductsManagerFs()
 const { getCartById, createCart, createProductToCart } = new CartManagerFs()
@@ -25,10 +22,18 @@ router.post('/:cid/product/:pid', async (req, res) => {
         const { cid } = req.params
         const { pid } = req.params
         const data = req.body
-        const response = await createProductToCart(cid, pid, data)
-        res.send({status: 'success', data: response})
+        const productsDb = await getCartById(cid)
+        if(productsDb.length > 0){
+            const response = await createProductToCart(cid, pid, data)
+            res.send({status: 'success', data: response})
+        } 
+        res.status(404).json({
+            status: 'failed',
+            message: 'cart not found'
+            })
     } catch (error) {
-        console.error('este es eñl error', error)
+        res.send({status: 'error', data: response})
+        console.error('este es el error', error)
     }
 })
 
@@ -43,4 +48,3 @@ router.post('/', async (req, res) => {
 })
 
 module.exports = router
-//export default router
