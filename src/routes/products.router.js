@@ -1,9 +1,7 @@
 const { Router } = require('express')
 const ProductsManagerFs = require('../managers/FileSystem/products.manager')
-//import { Router } from 'express' -> type modules
 
 const router = Router()
-
 const { getProducts, createProduct, updateProducts, deleteProducts } = new ProductsManagerFs()
 
 router.get('/', async (req, res) => {
