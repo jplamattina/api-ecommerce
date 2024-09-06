@@ -23,16 +23,9 @@
                     <strong>Stock:</strong> {{this.stock}}
                     <strong>category:</strong> {{this.category}}
             </li>
-        </ul>
             <button class="delete" id='delete'>eliminar</button>
             {{/each}}
-            {{#if hasPrevPage}}
-                <a href="/realtimeproducts?page={{prevPage}}">Anterior</a>
-            {{/if}}
-            {{#if hasNextPage}}
-                <a href="/realtimeproducts?page={{nextPage}}">Siguiente</a>
-            {{/if}}
-            <p>pagina {{currentPage}} de {{totalPages}}</p>
+        </ul>
     </main>
 </body>
 <script src="/socket.io/socket.io.js"></script>

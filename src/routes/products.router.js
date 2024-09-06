@@ -6,7 +6,9 @@ const productService = new ProductManagerMongo
 
 router.get('/', async (req, res) => {
     try {
-        const pagination = await productService.getPagination(limit, page)
+        const { limit , pageNum } =  req.query
+        console.log('limit', limit)
+        const pagination = await productService.getPagination({limit, page: pageNum})
         // const productsDb = await productService.getProduct()
         res.send({status: 'success', payload: pagination})
     } catch (error) {

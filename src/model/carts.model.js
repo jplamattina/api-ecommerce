@@ -3,10 +3,10 @@ const { Schema, model } = require('mongoose')
 const collections = 'carts'
 
 const CartSchema = new Schema({
-    //userId
+    //userId -> se agregaria el userId
     products: {
         type: [{
-            product: {
+            productId: {
                 type: Schema.Types.ObjectId,
                 ref: 'products'
             },
@@ -17,8 +17,8 @@ const CartSchema = new Schema({
     }
 })
 
-CartSchema.pre('findOne', function(){
-    this.populate('products.product')
+CartSchema.pre('findOne', function() {
+    this.populate('products.productId')
 })
 
 const cartModel = model(collections, CartSchema)
