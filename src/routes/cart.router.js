@@ -11,6 +11,14 @@ const router = Router()
 const productService = new ProductManagerMongo
 const cartService = new CartManagerMongo
 
+router.get('/', async (req, res) => {
+    try {
+        const cartDb = await cartService.readCart()
+        res.send({status: 'success', data: cartDb})
+    } catch (error) {
+        console.error(error)
+    }
+})
 router.get('/:cid', async (req, res) => {
     const { cid } = req.params
     try {
