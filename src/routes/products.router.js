@@ -1,13 +1,14 @@
 const { Router } = require('express')
-const ProductsManagerFs = require('../managers/FileSystem/products.manager')
+const { ProductManagerMongo } = require('../daos/mongo/productsMongo.manager')
 
 const router = Router()
-const { getProducts, createProduct, updateProducts, deleteProducts } = new ProductsManagerFs()
+const productService = new ProductManagerMongo
 
 router.get('/', async (req, res) => {
     try {
-        const productsDb = await getProducts()
-        res.send({status: 'success', data: productsDb})
+        const pagination = await productService.getPagination(limit, page)
+        // const productsDb = await productService.getProduct()
+        res.send({status: 'success', payload: pagination})
     } catch (error) {
         console.error(error)
     }
@@ -16,19 +17,20 @@ router.get('/', async (req, res) => {
 router.get('/:pid', async (req, res) => {
     const { pid } = req.params
     try {
-        const productsDb = await getProducts()
-        const newProductList = productsDb.filter(product => product.id == parseInt(pid))
-        res.status(200).send(newProductList)
+        const productsDb = await productService.getProduct(pid)
+        res.status(200).send(productsDb)
     } catch (error) {
         console.error(error)
     }
 })
 
+
 router.post('/', async (req, res) => {
     try {
         const { body } = req
-        const response = await createProduct(body)
-        res.send({status: 'success', data: response})
+        const response = await productService.createProduct(body)
+        console.log('responde', response)
+        res.send({status: 'success', payload: response})
     } catch (error) {
         console.error(error)
     }
@@ -38,8 +40,7 @@ router.put('/:pid', async (req, res) => {
     const { pid } = req.params
     const {title, description, code, price, status, stock, category} = req.body
     try {
-        const productsDb = await getProducts()
-        const productFilter = productsDb.find(product => product.id == parseInt(pid))
+        const productFilter = await productService.getProduct(pid)
         if(productFilter) {
             const updatedProduct = {
                 ...productFilter,
@@ -51,7 +52,7 @@ router.put('/:pid', async (req, res) => {
                 stock: stock !== undefined ? stock : productFilter.stock,
                 category: category !== undefined ? category : productFilter.category
             }
-            await updateProducts(updatedProduct)
+            await productService.updateProduct(pid, updatedProduct);
             res.status(200).json({
                 status: 'success',
                 data: updatedProduct
@@ -70,10 +71,8 @@ router.put('/:pid', async (req, res) => {
 
 router.delete('/:pid', async (req, res) => {
     const { pid } = req.params
-    const productsDb = await getProducts()
-    const productFilter = productsDb.find(product => product.id == parseInt(pid))
     try {
-        await deleteProducts(pid)
+        const productFilter = await productService.deleteProduct(pid)
         if (productFilter) { 
             res.status(200).json({
             status: 'success',

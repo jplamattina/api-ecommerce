@@ -15,6 +15,15 @@
             </li>
             {{/each}}
         </ul>
+    <center>
+        {{#if hasPrevPage}}
+            <a href="/products?pageNum={{prevPage}}">Anterior</a>
+        {{/if}}
+        <label for="">{{page}}</label>
+        {{#if hasNextPage}}
+            <a href="/products?pageNum={{nextPage}}">Siguiente</a>
+        {{/if}}
+    </center>
     </main>
 </body>
 <script src="/socket.io/socket.io.js"></script>

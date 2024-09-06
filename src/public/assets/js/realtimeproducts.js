@@ -9,7 +9,7 @@ document.getElementById('productForm').addEventListener('submit', function(e) {
     const status = document.getElementById('status').value
     const stock = document.getElementById('stock').value
     const category = document.getElementById('category').value
-
+    console.log('asdfasdsa entroo aca??', title)
     socket.emit('createProduct', { title, description, code, price, status, stock, category})
 
     document.getElementById('title').value = ''
@@ -22,7 +22,6 @@ document.getElementById('productForm').addEventListener('submit', function(e) {
 })
 
 socket.on('products', (products) => {
-    console.log('asdasdasdasdasdasdadwdqwdas entreeeeee')
     const productList = document.getElementById('product-list')
     productList.innerHTML = ''
 

@@ -7,6 +7,7 @@ const { uploader } = require('./utils/multer.js')
 const handlebars = require('express-handlebars')
 const { Server } = require('socket.io')
 const ProductsManagerFs = require('../src/managers/FileSystem/products.manager.js')
+const { connectDB } = require('./config/index.js')
 
 const app = express()
 const PORT = 8080
@@ -21,6 +22,8 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(express.static(__dirname + '/public'))
 app.use(logger('dev'))
+
+connectDB()
 
 //configuracion del motor de plantillas - handlebars
 app.engine('handlebars', handlebars.engine())
