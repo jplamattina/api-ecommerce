@@ -10,7 +10,8 @@ const productService = new ProductManagerMongo
 
 viewsRouter.get('/products', async (req, res) => {
     const { limit , pageNum, sort} =  req.query
-    const sortObj = {price: sort}
+    const validSort = sort == 1 ? 1 : -1;
+    console.log(validSort)
     try {
         const {
             docs,
@@ -19,7 +20,7 @@ viewsRouter.get('/products', async (req, res) => {
             prevPage,
             nextPage,
             page,
-        } = await productService.getPagination({limit, page: pageNum, sort})
+        } = await productService.getPagination({limit, page: pageNum, sort: {price: validSort}})
 
             res.render('products', {
                 products: docs,

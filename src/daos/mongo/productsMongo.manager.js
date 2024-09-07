@@ -6,7 +6,7 @@ class ProductManagerMongo {
     }
 
     //crud de productos
-    getPagination   = async ({limit=10, page=1, sort={price: -1}}) => await this.model.paginate({}, {limit, page, sort, lean: true})
+    getPagination   = async ({limit=10, page=1, sort={validSort}}) => await this.model.paginate({}, {limit, page, sort, lean: true})
     getProducts     = async () => await this.model.find({})
     getProduct      = async (pid) => await this.model.findOne({ _id: pid }).lean() // filtro 
     createProduct   = async (newProduct) => await this.model.create(newProduct)
