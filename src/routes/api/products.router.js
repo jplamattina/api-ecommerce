@@ -1,14 +1,14 @@
 const { Router } = require('express')
-const { ProductManagerMongo } = require('../daos/mongo/productsMongo.manager')
+const { ProductManagerMongo } = require('../../daos/mongo/productsMongo.manager')
 
 const router = Router()
 const productService = new ProductManagerMongo
 
 router.get('/', async (req, res) => {
     try {
-        const { limit , pageNum } =  req.query
-        console.log('limit', limit)
-        const pagination = await productService.getPagination({limit, page: pageNum})
+        const { limit , pageNum, sort } =  req.query
+        const pagination = await productService.getPagination({limit, page: pageNum, sort })
+        console.log('pagination', pagination)
         // const productsDb = await productService.getProduct()
         res.send({status: 'success', payload: pagination})
     } catch (error) {

@@ -1,8 +1,8 @@
 const { Router } = require('express')
-const CartManagerFs = require('../managers/FileSystem/carts.manager')
-const ProductsManagerFs = require('../managers/FileSystem/products.manager')
-const { ProductManagerMongo } = require('../daos/mongo/productsMongo.manager')
-const { CartManagerMongo } = require('../daos/mongo/cartMongo.manager')
+const CartManagerFs = require('../../managers/FileSystem/carts.manager')
+const ProductsManagerFs = require('../../managers/FileSystem/products.manager')
+const { ProductManagerMongo } = require('../../daos/mongo/productsMongo.manager')
+const { CartManagerMongo } = require('../../daos/mongo/cartMongo.manager')
 
 const router = Router()
 

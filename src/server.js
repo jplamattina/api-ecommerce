@@ -1,6 +1,6 @@
 const express = require('express')
-const productRouter = require('./routes/products.router.js')
-const cartRouter = require('./routes/cart.router.js')
+const productRouter = require('./routes/api/products.router.js')
+const cartRouter = require('./routes/api/cart.router.js')
 const viewsRouter = require('./routes/views.router.js')
 const logger = require('morgan')
 const { uploader } = require('./utils/multer.js')
